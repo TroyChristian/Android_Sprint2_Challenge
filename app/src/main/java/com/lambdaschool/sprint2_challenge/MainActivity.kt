@@ -8,28 +8,37 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.NotificationCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import android.widget.Button
+
 
 import kotlinx.android.synthetic.main.activity_main.*
-import layout.GroceryListAdapter
 import android.content.Intent
-import android.R
-import android.view.View
+
+
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_item)
+        setContentView(R.layout.activity_main)
         GroceryRepository.createGroceryList()
-
         grocery_list_view.apply {
-            setHasFixedSize(true)
+
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = GroceryListAdapter(GroceryRepository.groceryList)
         }
 
-
+            send_btn.setOnClickListener{
+                createNotification(getFavorites())
+                var my_intent = Intent.setAction.Intent.ACTION_SEND
+                my_intent.setType("text/plain")
+                my_intent.putExtra(Intent.EXTRA_TEXT, "Your text here")
+                startActivity(Intent.createChooser(intent2, "Share via"))
+            }
 
     }
 
@@ -67,5 +76,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
+
     }
+
+
 

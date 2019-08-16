@@ -1,4 +1,5 @@
-package layout
+package com.lambdaschool.sprint2_challenge
+
 
 
 import android.support.v4.content.ContextCompat
@@ -9,8 +10,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.lambdaschool.sprint2_challenge.GroceryItem
-import com.lambdaschool.sprint2_challenge.R
 import kotlinx.android.synthetic.main.grocery_list_item.view.*
 
 class GroceryListAdapter(val groceryList: MutableList<GroceryItem>) : RecyclerView.Adapter<GroceryListAdapter.ViewHolder>() {
@@ -25,29 +24,29 @@ override fun getItemCount(): Int {
 }
 
 override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    val groceryitem = groceryList[position]
-    holder.bindModel(groceryitem)
+    val grocery = groceryList[position]
+    holder.bindModel(grocery)
 
     holder.groceryImageView.setOnClickListener {
-        groceryitem.isSelected = !groceryitem.isSelected
+        grocery.isSelected = !grocery.isSelected
         notifyItemChanged(position)
     }
 
 
 }
-
+var shopping_list = mutableListOf<String>()
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val groceryImageView: ImageView = view.grocery_image_view
     val groceryNameView: TextView = view.grocery_name_view
-    val groceryItemParent: LinearLayout = view.grocery_item_ancestor
+    val groceryItemAncestor: LinearLayout = view.grocery_item_ancestor
 
-    fun bindModel(groceryitem: GroceryItem) {
-        groceryImageView.setImageResource(groceryitem.imageID)
-        groceryNameView.text = groceryitem.name
-        if (groceryitem.isSelected)
-            groceryImageView.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
+    fun bindModel(food: GroceryItem) {
+        groceryImageView.setImageResource(food.imageID)
+        groceryNameView.text = food.name
+        if (food.isSelected)
+            groceryItemAncestor.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
         else
-            groceryImageView.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorPrimaryDark))
+            groceryItemAncestor.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorPrimaryDark))
     }
 }
 

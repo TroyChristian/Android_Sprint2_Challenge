@@ -18,7 +18,7 @@
         android:id="@+id/grocery_image_view"
         android:layout_width="111dp"
         android:layout_height="111dp"
-        android:src="@drawable/apple2"
+
         android:scaleType="fitCenter"
         android:layout_margin="8dp" />
 
