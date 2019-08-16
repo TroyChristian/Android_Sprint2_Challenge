@@ -11,12 +11,16 @@ import android.support.v7.widget.LinearLayoutManager
 
 import kotlinx.android.synthetic.main.activity_main.*
 import layout.GroceryListAdapter
+import android.content.Intent
+import android.R
+import android.view.View
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_list_item)
         GroceryRepository.createGroceryList()
 
         grocery_list_view.apply {
@@ -25,9 +29,8 @@ class MainActivity : AppCompatActivity() {
             adapter = GroceryListAdapter(GroceryRepository.groceryList)
         }
 
-        send_list_button.setOnClickListener {
-            createNotification(getFavorites())
-        }
+
+
     }
 
     fun getFavorites(): String {
@@ -62,4 +65,7 @@ class MainActivity : AppCompatActivity() {
                 .setAutoCancel(true)
         notificationManager.notify(1, notificationBuilder.build())
     }
-}
+
+
+    }
+
