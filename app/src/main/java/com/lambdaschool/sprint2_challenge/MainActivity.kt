@@ -33,11 +33,12 @@ class MainActivity : AppCompatActivity() {
         }
 
             send_btn.setOnClickListener{
-                createNotification(getFavorites())
-                var my_intent = Intent.setAction.Intent.ACTION_SEND
-                my_intent.setType("text/plain")
-                my_intent.putExtra(Intent.EXTRA_TEXT, "Your text here")
-                startActivity(Intent.createChooser(intent2, "Share via"))
+                createNotification("Your Order has been placed")
+                val shareIntent = Intent()
+                shareIntent.action = Intent.ACTION_SEND
+                shareIntent.type="text/plain"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getFavorites());
+                startActivity(Intent.createChooser(shareIntent, getFavorites()))
             }
 
     }
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     fun getFavorites(): String {
         var favoritesString = ""
         for (groceryitem in GroceryRepository.groceryList) {
-            if (groceryitem.isSelected) favoritesString += "${groceryitem.name}, "
+            if (groceryitem.isSelected) favoritesString += "Please place this Order for me:${groceryitem.name}, "
         }
 
         return favoritesString
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
                 .setPriority(NotificationManager.IMPORTANCE_HIGH)
                 .setSmallIcon(android.R.drawable.ic_dialog_alert)
-                .setContentTitle("Grocery List Notification")
+                .setContentTitle("Confirmation")
                 .setContentText(favorites)
                 .setAutoCancel(true)
         notificationManager.notify(1, notificationBuilder.build())
