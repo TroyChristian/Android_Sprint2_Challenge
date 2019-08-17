@@ -46,10 +46,11 @@ class MainActivity : AppCompatActivity() {
     fun getFavorites(): String {
         var favoritesString = ""
         for (groceryitem in GroceryRepository.groceryList) {
-            if (groceryitem.isSelected) favoritesString += "Please place this Order for me:${groceryitem.name}, "
+            if (groceryitem.isSelected) favoritesString += "${groceryitem.name}, "
         }
-
-        return favoritesString
+            var placeholder = "Please place this order for me "
+            var result = "${placeholder}  ${favoritesString}"
+        return result
     }
 
     fun createNotification(favorites: String) {

@@ -6,6 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+
+
+
+    </style>
+    <style name = "Apollo">
+        <item name = "colorPrimary">#0277bd</item>
+        <item name = "android:colorPrimaryDark">#ffff00</item>
+        <item name = "colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>

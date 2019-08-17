@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="11dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/Apollo">
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/grocery_list_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/send_btn"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#0277bd">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -20,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send list"
+        android:background = "#ffff00"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
